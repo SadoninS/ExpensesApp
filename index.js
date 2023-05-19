@@ -21,13 +21,13 @@ statusNode.innerText = status;
 
 inputNode.addEventListener('keyup', function (submitByEnter) {
     if (submitByEnter.keyCode === 13) {
-        if (!inputNode.value || inputNode.value < 1) {
+        if (!inputNode.value || inputNode.value <= 0) {
             alert('Сумма расхода не может иметь отрицательное значение или равняться "0"');
             inputNode.value = '';
             return;
         }
 
-        let expense = parseInt(inputNode.value);
+        let expense = parseFloat(inputNode.value);
 
         expenses.push(expense);
 
@@ -67,7 +67,7 @@ btnNode.addEventListener('click', function () {
         return;
     }
 
-    let expense = parseInt(inputNode.value);
+    let expense = parseFloat(inputNode.value);
 
     expenses.push(expense);
 
