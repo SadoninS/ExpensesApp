@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Учет Расходов</title>
     <link rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <h1>Учет Расходов</h1>
-    <input class="js-input input" type="number" placeholder="Введите сумму расхода">
-    <button class="js-btn btn">Добавить</button>
+    <div class="form">
+        <input class="js-input input" type="number" placeholder="Введите сумму расхода">
+        <button class="js-btn btn">Добавить</button>
+    </div>
+
+
+    <div class="history-wrapper">
+        <h2>Расходы</h2>
+        <div class="js-history">
+        </div>
+        <div class="status-wrapper">
+            <p class="limit">Лимит: <span class="js-limit-value">10000</span> &#x20bd</p>
+            <p class="total">Сумма: <span class="js-total-value">0</span> &#x20bd</p>
+            <p class="status">Статус: <span class="js-status-value status_green"></span></p>
+        </div>
+    </div>
 
 
     <script src="index.js"></script>
 </body>
+
 </html>`
