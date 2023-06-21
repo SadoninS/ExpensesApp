@@ -68,8 +68,10 @@ function setNewLimitHandler() {
 }
 
 function checkStatus(sum) {
-  if (sum <= limit) return;
-  else {
+  if (sum <= limit) {
+    statusNode.innerText = statusInitialValue;
+    statusNode.classList.remove('status_red');
+  } else {
     statusNode.innerText = `LIMIT EXEEDED! (${limit - sum})`;
     statusNode.classList.add('status_red');
   }
