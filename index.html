@@ -1,36 +1,114 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
     <title>Учет Расходов</title>
-    <link rel="shortcut icon" href="resources/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="index.css">
-</head>
+    <link
+      rel="shortcut icon"
+      href="resources/favicon.png"
+      type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="index.css" />
+  </head>
 
-<body>
+  <body>
     <h1>Учет Расходов</h1>
-    <div class="form">
-        <input class="js-input input" type="number" placeholder="Введите сумму расхода">
-        <button class="js-btn btn">Добавить</button>
+    <div class="newExpenseForm">
+      <div class="formInputs">
+        <input
+          data-new-expense-input
+          class="newExpenseInput"
+          type="number"
+          placeholder="Введите сумму расхода" />
+        <select
+          data-category
+          name="Категория"
+          class="expenseCategory">
+          <option value="">Без категории</option>
+          <option value="Продукты">Продукты</option>
+          <option value="Авто">Авто</option>
+          <option value="Развлечения">Развлечения</option>
+          <option value="ЖКХ">ЖКХ</option>
+        </select>
+      </div>
+      <div class="formBtns">
+        <button
+          id="addExpenseBtn"
+          class="addExpenseBtn">
+          Добавить новый расход
+        </button>
+        <button
+          id="clearExpenseBtn"
+          class="clearExpenseBtn">
+          Очистить список расходов
+        </button>
+      </div>
     </div>
-
 
     <div class="history-wrapper">
-        <h2>Расходы</h2>
-        <div class="js-history">
+      <div class="appStatus-wrapper">
+        <div class="limit-wrapper">
+          <p class="limit__title">Лимит:</p>
+          <p
+            id="currentLimit"
+            class="limit__value">
+            10000
+          </p>
+          <button
+            data-set-new-limit-btn
+            class="setNewLimitBtn"
+            type="button"></button>
         </div>
+
+        <div class="total-wrapper">
+          <p class="total__title">Сумма:</p>
+          <p
+            data-sum
+            class="total__value">
+            0
+          </p>
+        </div>
+
         <div class="status-wrapper">
-            <p class="limit">Лимит: <span class="js-limit-value">10000</span> &#x20bd</p>
-            <p class="total">Сумма: <span class="js-total-value">0</span> &#x20bd</p>
-            <p class="status">Статус: <span class="js-status-value status_green"></span></p>
+          <p class="status__title">Статус:</p>
+          <p
+            id="status"
+            class="status__value status_green">
+            Все хорошо!
+          </p>
         </div>
+      </div>
+
+      <div
+        id="historyList-wrapper"
+        class="historyList-wrapper">
+        <p class="history__title">История</p>
+        <ol
+          id="historyList"
+          class="historyList"></ol>
+      </div>
     </div>
-
-
+    <!-- <div
+      id="newLimitPopup"
+      class="newLimitPopup">
+      <h2 class="popupTitle">Новый лимит</h2>
+      <div class="newLimitForm">
+        <input
+          type="text"
+          placeholder="Введите новый лимит" />
+        <button
+          type="button"
+          disabled></button>
+      </div>
+    </div> -->
     <script src="index.js"></script>
-</body>
-
-</html>`
+    <!-- <script src="index2.js"></script> -->
+  </body>
+</html>
