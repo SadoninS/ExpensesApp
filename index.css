@@ -1,11 +1,8 @@
 body {
   margin: 0 auto;
   padding: 0 25px;
-  max-width: 1094px;
+  max-width: 1000px;
   font-family: Inter;
-}
-* {
-  box-sizing: border-box;
 }
 
 h1 {
@@ -37,7 +34,6 @@ button {
 .newExpenseInput,
 .expenseCategory {
   padding: 5px 10px;
-  width: 40vw;
   height: 60px;
   font-family: Inter;
   font-size: 32px;
@@ -69,6 +65,7 @@ button {
 }
 
 .appStatus-wrapper {
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -81,10 +78,11 @@ button {
   gap: 10px;
   text-align: left;
   font-size: 32px;
-  line-height: 39px;
+  line-height: 42px;
 }
 
 .historyList-wrapper {
+  row-gap: 30px;
   font-size: 32px;
   line-height: 39px;
 }
@@ -96,9 +94,23 @@ button {
   font-weight: 700;
 }
 
-.history__title {
+.historyList {
+  margin-left: 35px;
+}
+
+.currency {
   text-align: end;
 }
+
+.setNewLimitBtn {
+  background-image: url(resources/editLimit.png);
+  width: 42px;
+  height: 42px;
+
+  background-color: white;
+}
+
+/* JS-styles */
 
 .status_green {
   color: green;
@@ -106,43 +118,6 @@ button {
 
 .status_red {
   color: red;
-}
-.currency {
-  text-align: end;
-}
-
-.limit__value::after,
-.total__value::after,
-.currency::after {
-  content: ' руб.';
-  width: 20px;
-  height: 20px;
-  text-align: end;
-}
-
-.setNewLimitBtn {
-  margin-left: 15px;
-  margin-top: 25px;
-  background-image: url(resources/editLimit.png);
-  width: 42px;
-  height: 42px;
-
-  background-color: white;
-}
-/* Popup New Limit */
-
-.newLimitPopup {
-  border: 1px solid red;
-  padding: 10%;
-  width: 991px;
-  height: 525px;
-  display: flex;
-}
-
-.popupTitle {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 39px;
 }
 
 @media (max-width: 768px) {
@@ -163,5 +138,10 @@ button {
   .clearExpenseBtn {
     font-size: 25px;
     line-height: 40px;
+  }
+
+  .history-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 }

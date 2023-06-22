@@ -1,9 +1,3 @@
-function clearInput() {
-  newExpenseInputNode.value = '';
-  newExpenseInputNode.focus();
-  expenseCategoryNode.selectedIndex = 0;
-}
-
 const currency = 'руб.';
 const INPUT_ERROR_MESSAGE =
   'Неверный формат ввода: Сумма расхода не может иметь отрицательное значение или равняться "0"';
@@ -12,24 +6,29 @@ const newExpenseInputNode = document.querySelector('[data-new-expense-input]');
 const expenseCategoryNode = document.querySelector('[data-expense-category]');
 const btnNode = document.querySelector('[data-add-expense-btn]');
 const historyNode = document.querySelector('[data-hystory-list]');
+const clearHistoryBtnNode = document.querySelector('[data-clear-expenses]');
 
 const setNewLimitBtnNode = document.querySelector('[data-set-new-limit-btn]');
 
 let expenses = [];
 
+clearHistoryBtnNode.addEventListener('click', clearHistory);
+
 setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
 
+btnNode.addEventListener('click', function () {
+  addExpenseHandler();
+});
+
 const sumNode = document.querySelector('[data-sum]');
-const sumInitialVlue = 0;
-let sum = sumInitialVlue;
+const SUM_INIT_VALUE = 0;
+let sum = SUM_INIT_VALUE;
 sumNode.innerText = sum;
-// sumNode.classList.add('currency');
 
 const limitNode = document.querySelector('[data-limit]');
 const LIMIT_INIT_VALUE = 10000;
 let limit = LIMIT_INIT_VALUE;
 limitNode.innerText = limit;
-// limitNode.classList.add('currency');
 
 const statusNode = document.querySelector('[data-status]');
 const STATUS_INIT_VALUE = 'OK';
@@ -66,15 +65,6 @@ statusNode.innerText = status;
 //     renderStatus(sum);
 //   }
 // });
-
-btnNode.addEventListener('click', function () {
-  getExpense();
-  countSum(expenses);
-  renderSum(sum);
-  renderExpenses();
-  renderStatus(sum);
-  clearInput();
-});
 
 // btnNode.addEventListener('click', function () {
 //   if (!newExpenseInputNode.value || newExpenseInputNode.value < 1) {

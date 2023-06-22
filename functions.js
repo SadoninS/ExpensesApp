@@ -1,3 +1,25 @@
+function addExpenseHandler() {
+  getExpense();
+  countSum(expenses);
+  renderStatus(sum);
+  renderSum(sum);
+  renderHistory();
+  clearInput();
+}
+
+function clearInput() {
+  newExpenseInputNode.value = '';
+  newExpenseInputNode.focus();
+  expenseCategoryNode.selectedIndex = 0;
+}
+
+function clearHistory() {
+  historyNode.innerHTML = '';
+  sumNode.innerHTML = SUM_INIT_VALUE;
+  statusNode.innerHTML = STATUS_INIT_VALUE;
+  statusNode.classList.remove('status_red');
+}
+
 function setNewLimitHandler() {
   const newLimit = prompt('Введите новый лимит');
   const newLimitValue = parseInt(newLimit);
@@ -6,14 +28,28 @@ function setNewLimitHandler() {
   renderStatus(sum);
 }
 
+function renderSum(sum) {
+  sum = sum.toFixed(2);
+  sumNode.innerText = sum;
+}
+
 function renderStatus(sum) {
   if (sum <= limit) {
     statusNode.innerText = STATUS_INIT_VALUE;
     statusNode.classList.remove('status_red');
   } else {
-    statusNode.innerText = `LIMIT EXEEDED! (${(limit - sum).toFixed(2)})`;
+    statusNode.innerText = `LIMIT EXEEDED!(${(limit - sum).toFixed(2)})`;
     statusNode.classList.add('status_red');
   }
+}
+
+function renderHistory() {
+  let expensesListHTML = '';
+  expenses.forEach((expense) => {
+    expenseValueHTML = expense.val.toFixed(2);
+    expensesListHTML += `<li class="expensesItem"> ${expenseValueHTML} ${currency} ${expense.category}</li>`;
+    historyNode.innerHTML = expensesListHTML;
+  });
 }
 
 function getExpense() {
@@ -34,19 +70,4 @@ function countSum(expenses) {
     sum += expenseItem;
   });
   return sum;
-}
-
-function renderExpenses() {
-  let expensesListHTML = '';
-  expenses.forEach((expense) => {
-    expenseValueHTML = expense.val.toFixed(2);
-
-    expensesListHTML += `<li class="expensesItem"> ${expenseValueHTML} ${currency} ${expense.category}</li>`;
-    historyNode.innerHTML = expensesListHTML;
-  });
-}
-
-function renderSum(sum) {
-  sum = sum.toFixed(2);
-  sumNode.innerText = sum;
 }

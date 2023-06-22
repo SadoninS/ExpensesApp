@@ -64,6 +64,7 @@
             class="limit__value">
             10000
           </p>
+          <span> руб.</span>
           <button
             data-set-new-limit-btn
             class="setNewLimitBtn"
@@ -74,7 +75,10 @@
           <p class="total__title">Всего:</p>
           <p
             data-sum
-            class="total__value"></p>
+            class="total__value">
+            0
+          </p>
+          <span> руб.</span>
         </div>
 
         <div class="status-wrapper">
@@ -87,28 +91,13 @@
         </div>
       </div>
 
-      <div
-        id="historyList-wrapper"
-        class="historyList-wrapper">
-        <p class="history__title">История</p>
+      <div class="historyList-wrapper">
+        <p class="history__title">История расходов:</p>
         <ol
           data-hystory-list
           class="historyList"></ol>
       </div>
     </div>
-    <!-- <div
-      id="newLimitPopup"
-      class="newLimitPopup">
-      <h2 class="popupTitle">Новый лимит</h2>
-      <div class="newLimitForm">
-        <input
-          type="text"
-          placeholder="Введите новый лимит" />
-        <button
-          type="button"
-          disabled></button>
-      </div>
-    </div> -->
     <script src="functions.js"></script>
     <script src="index.js"></script>
   </body>
