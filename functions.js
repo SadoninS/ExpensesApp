@@ -3,10 +3,10 @@ function setNewLimitHandler() {
   const newLimitValue = parseInt(newLimit);
   limit = newLimitValue;
   limitNode.innerText = limit;
-  checkStatus(sum);
+  renderStatus(sum);
 }
 
-function checkStatus(sum) {
+function renderStatus(sum) {
   if (sum <= limit) {
     statusNode.innerText = STATUS_INIT_VALUE;
     statusNode.classList.remove('status_red');

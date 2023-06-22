@@ -1,81 +1,81 @@
+function clearInput() {
+  newExpenseInputNode.value = '';
+  newExpenseInputNode.focus();
+  expenseCategoryNode.selectedIndex = 0;
+}
+
+const currency = 'руб.';
 const INPUT_ERROR_MESSAGE =
   'Неверный формат ввода: Сумма расхода не может иметь отрицательное значение или равняться "0"';
 
 const newExpenseInputNode = document.querySelector('[data-new-expense-input]');
-const btnNode = document.querySelector('#addExpenseBtn');
-const historyNode = document.querySelector('#historyList');
+const expenseCategoryNode = document.querySelector('[data-expense-category]');
+const btnNode = document.querySelector('[data-add-expense-btn]');
+const historyNode = document.querySelector('[data-hystory-list]');
 
 const setNewLimitBtnNode = document.querySelector('[data-set-new-limit-btn]');
 
 let expenses = [];
 
+setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
+
 const sumNode = document.querySelector('[data-sum]');
 const sumInitialVlue = 0;
 let sum = sumInitialVlue;
 sumNode.innerText = sum;
-sumNode.classList.add('currency');
+// sumNode.classList.add('currency');
 
-const limitNode = document.querySelector('#currentLimit');
-const limitInitialValue = 10000;
-let limit = limitInitialValue;
+const limitNode = document.querySelector('[data-limit]');
+const LIMIT_INIT_VALUE = 10000;
+let limit = LIMIT_INIT_VALUE;
 limitNode.innerText = limit;
-limitNode.classList.add('currency');
+// limitNode.classList.add('currency');
 
-const statusNode = document.querySelector('#status');
-const statusInitialValue = 'OK';
-let status = statusInitialValue;
+const statusNode = document.querySelector('[data-status]');
+const STATUS_INIT_VALUE = 'OK';
+let status = STATUS_INIT_VALUE;
 statusNode.innerText = status;
 
-newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {
-  if (submitByEnter.keyCode === 13) {
-    if (!newExpenseInputNode.value || newExpenseInputNode.value <= 0) {
-      alert(INPUT_ERROR_MESSAGE);
-      newExpenseInputNode.value = '';
-      return;
-    }
+// newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {
+//   if (submitByEnter.keyCode === 13) {
+//     if (!newExpenseInputNode.value || newExpenseInputNode.value <= 0) {
+//       alert(INPUT_ERROR_MESSAGE);
+//       newExpenseInputNode.value = '';
+//       return;
+//     }
 
-    let expense = parseFloat(newExpenseInputNode.value);
-    expense = expense.toFixed(2);
-    expenses.push(expense);
-    newExpenseInputNode.value = '';
+//     let expense = parseFloat(newExpenseInputNode.value);
+//     expense = expense.toFixed(2);
+//     expenses.push(expense);
+//     newExpenseInputNode.value = '';
 
-    let expensesListHTML = '';
-    expenses.forEach((element) => {
-      expensesListHTML += `<li class="currency">${element}</li>`;
-    });
-    historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
+//     let expensesListHTML = '';
+//     expenses.forEach((element) => {
+//       expensesListHTML += `<li class="currency">${element}</li>`;
+//     });
+//     historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 
-    let sum = 0;
-    expenses.forEach((element) => {
-      element = parseFloat(element);
-      sum += element;
-    });
-    sum = sum.toFixed(2);
-    sumNode.innerText = sum;
+//     let sum = 0;
+//     expenses.forEach((element) => {
+//       element = parseFloat(element);
+//       sum += element;
+//     });
+//     sum = sum.toFixed(2);
+//     sumNode.innerText = sum;
 
-    checkStatus(sum);
-  }
+//     renderStatus(sum);
+//   }
+// });
+
+btnNode.addEventListener('click', function () {
+  getExpense();
+  countSum(expenses);
+  renderSum(sum);
+  renderExpenses();
+  renderStatus(sum);
+  clearInput();
 });
 
-setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
-
-function setNewLimitHandler() {
-  const newLimit = prompt('Введите новый лимит');
-  const newLimitValue = parseInt(newLimit);
-  limit = newLimitValue;
-  limitNode.innerText = limit;
-  checkStatus(sum);
-}
-
-function checkStatus(sum) {
-  if (sum <= limit) {
-    statusNode.innerText = statusInitialValue;
-    statusNode.classList.remove('status_red');
-  } else {
-    statusNode.innerText = `LIMIT EXEEDED! (${limit - sum})`;
-    statusNode.classList.add('status_red');
-  }
-}
 // btnNode.addEventListener('click', function () {
 //   if (!newExpenseInputNode.value || newExpenseInputNode.value < 1) {
 //     alert(INPUT_ERROR_MESSAGE);

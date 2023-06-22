@@ -9,7 +9,10 @@ body {
 }
 
 h1 {
+  margin-bottom: 10px;
+  font-size: 40px;
   text-align: center;
+  font-weight: bold;
 }
 button {
   border: none;
@@ -17,6 +20,7 @@ button {
 }
 
 .newExpenseForm {
+  margin-bottom: 20px;
   display: flex;
   gap: 30px;
   justify-content: space-between;
@@ -64,11 +68,16 @@ button {
   flex-wrap: wrap;
 }
 
+.appStatus-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .limit-wrapper,
 .status-wrapper,
 .total-wrapper {
+  margin: 0;
   display: flex;
-  width: 40vw;
   gap: 10px;
   text-align: left;
   font-size: 32px;
@@ -98,6 +107,9 @@ button {
 .status_red {
   color: red;
 }
+.currency {
+  text-align: end;
+}
 
 .limit__value::after,
 .total__value::after,
@@ -105,6 +117,7 @@ button {
   content: ' руб.';
   width: 20px;
   height: 20px;
+  text-align: end;
 }
 
 .setNewLimitBtn {
@@ -130,4 +143,25 @@ button {
   font-size: 32px;
   font-weight: 700;
   line-height: 39px;
+}
+
+@media (max-width: 768px) {
+  .formInputs,
+  .formBtns {
+    margin: 0 auto;
+  }
+  .newExpenseInput,
+  .expenseCategory {
+    padding: 5px 10px;
+    width: 100%;
+    height: 60px;
+    font-family: Inter;
+    font-size: 25px;
+  }
+
+  .addExpenseBtn,
+  .clearExpenseBtn {
+    font-size: 25px;
+    line-height: 40px;
+  }
 }

@@ -15,6 +15,9 @@
       type="image/x-icon" />
     <link
       rel="stylesheet"
+      href="reset.css" />
+    <link
+      rel="stylesheet"
       href="index.css" />
   </head>
 
@@ -28,7 +31,7 @@
           type="number"
           placeholder="Введите сумму расхода" />
         <select
-          data-category
+          data-expense-category
           name="Категория"
           class="expenseCategory">
           <option value="">Без категории</option>
@@ -40,12 +43,12 @@
       </div>
       <div class="formBtns">
         <button
-          id="addExpenseBtn"
+          data-add-expense-btn
           class="addExpenseBtn">
           Добавить новый расход
         </button>
         <button
-          id="clearExpenseBtn"
+          data-clear-expenses
           class="clearExpenseBtn">
           Очистить список расходов
         </button>
@@ -57,7 +60,7 @@
         <div class="limit-wrapper">
           <p class="limit__title">Лимит:</p>
           <p
-            id="currentLimit"
+            data-limit
             class="limit__value">
             10000
           </p>
@@ -68,18 +71,16 @@
         </div>
 
         <div class="total-wrapper">
-          <p class="total__title">Сумма:</p>
+          <p class="total__title">Всего:</p>
           <p
             data-sum
-            class="total__value">
-            0
-          </p>
+            class="total__value"></p>
         </div>
 
         <div class="status-wrapper">
           <p class="status__title">Статус:</p>
           <p
-            id="status"
+            data-status
             class="status__value status_green">
             Все хорошо!
           </p>
@@ -91,7 +92,7 @@
         class="historyList-wrapper">
         <p class="history__title">История</p>
         <ol
-          id="historyList"
+          data-hystory-list
           class="historyList"></ol>
       </div>
     </div>
@@ -108,7 +109,7 @@
           disabled></button>
       </div>
     </div> -->
+    <script src="functions.js"></script>
     <script src="index.js"></script>
-    <!-- <script src="index2.js"></script> -->
   </body>
 </html>
