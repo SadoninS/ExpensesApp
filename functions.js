@@ -9,7 +9,6 @@ function addExpenseHandler() {
 
 function clearInput() {
   newExpenseInputNode.value = '';
-  newExpenseInputNode.focus();
   expenseCategoryNode.selectedIndex = 0;
 }
 
