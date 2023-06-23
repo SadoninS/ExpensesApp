@@ -25,15 +25,13 @@ limitNode.innerText = limit;
 
 let sumStorage = JSON.parse(localStorage.getItem(SUM_LS_KEY));
 let sum = sumStorage ? sumStorage : SUM_INIT_VALUE;
-renderSum(sum);
 
 let statusStorage = JSON.parse(localStorage.getItem(STATUS_LS_KEY));
 let status = statusStorage ? statusStorage : STATUS_INIT_VALUE;
-renderStatus();
 
 let expensesStorage = JSON.parse(localStorage.getItem(EXPENSES_LS_KEY));
 let expenses = Array.isArray(expensesStorage) ? expensesStorage : [];
-renderHistory(expenses);
+render();
 
 newExpenseBtnNode.addEventListener('click', addExpenseHandler);
 newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {

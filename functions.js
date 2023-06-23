@@ -6,10 +6,14 @@ function addExpenseHandler() {
   }
   getExpense();
   countSum(expenses);
+  render();
+  clearInput();
+}
+
+function render() {
   renderSum(sum);
   renderStatus();
   renderHistory();
-  clearInput();
 }
 
 function clearHistoryHandler() {
@@ -29,7 +33,7 @@ function setNewLimitHandler() {
     limitNode.innerText = limit;
     limitStorage = JSON.stringify(limit);
     localStorage.setItem(LIMIT_LS_KEY, limitStorage);
-    renderStatus(sum);
+    render();
   } else return;
 }
 
