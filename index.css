@@ -68,7 +68,7 @@ option {
 /* History */
 .history-wrapper {
   display: flex;
-  justify-content: space-between;
+  column-gap: 145px;
   flex-wrap: wrap;
 }
 
@@ -130,15 +130,19 @@ option {
 }
 
 @media (max-width: 900px) {
+  .newExpenseForm {
+    flex-direction: column;
+  }
   .formInputs,
   .formBtns {
     margin: 0 auto;
   }
   .newExpenseInput,
   .expenseCategory {
-    width: inherit;
+    width: calc(95% - 10px);
     height: 50px;
     font-size: 25px;
+    margin: 0 auto;
   }
 
   .addExpenseBtn,

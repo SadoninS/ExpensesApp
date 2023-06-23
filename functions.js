@@ -1,18 +1,13 @@
 function addExpenseHandler() {
   getExpense();
   countSum(expenses);
-  renderStatus(sum);
   renderSum(sum);
+  renderStatus(sum);
   renderHistory();
   clearInput();
 }
 
-function clearInput() {
-  newExpenseInputNode.value = '';
-  expenseCategoryNode.selectedIndex = 0;
-}
-
-function clearHistory() {
+function clearHistoryHandler() {
   historyNode.innerHTML = '';
   sumNode.innerHTML = SUM_INIT_VALUE;
   statusNode.innerHTML = STATUS_INIT_VALUE;
@@ -27,6 +22,26 @@ function setNewLimitHandler() {
     limitNode.innerText = limit;
     renderStatus(sum);
   } else return;
+}
+
+function getExpense() {
+  let expense = {
+    val: 0,
+    category: '',
+  };
+  expense.val = parseFloat(newExpenseInputNode.value);
+  expense.category = expenseCategoryNode.value;
+  expenses.push(expense);
+  return expense;
+}
+
+function countSum(expenses) {
+  sum = 0;
+  expenses.forEach((element) => {
+    let expenseItem = parseFloat(element.val);
+    sum += expenseItem;
+  });
+  return sum;
 }
 
 function renderSum(sum) {
@@ -53,22 +68,7 @@ function renderHistory() {
   });
 }
 
-function getExpense() {
-  let expense = {
-    val: 0,
-    category: '',
-  };
-  expense.val = parseFloat(newExpenseInputNode.value);
-  expense.category = expenseCategoryNode.value;
-  expenses.push(expense);
-  return expense;
-}
-
-function countSum(expenses) {
-  sum = 0;
-  expenses.forEach((element) => {
-    let expenseItem = parseFloat(element.val);
-    sum += expenseItem;
-  });
-  return sum;
+function clearInput() {
+  newExpenseInputNode.value = '';
+  expenseCategoryNode.selectedIndex = 0;
 }

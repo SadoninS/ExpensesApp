@@ -12,14 +12,6 @@ const setNewLimitBtnNode = document.querySelector('[data-set-new-limit-btn]');
 
 let expenses = [];
 
-clearHistoryBtnNode.addEventListener('click', clearHistory);
-
-setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
-
-btnNode.addEventListener('click', function () {
-  addExpenseHandler();
-});
-
 const sumNode = document.querySelector('[data-sum]');
 const SUM_INIT_VALUE = 0;
 let sum = SUM_INIT_VALUE;
@@ -103,3 +95,6 @@ statusNode.innerText = status;
 //     statusNode.classList.add('status_red');
 //   }
 // });
+btnNode.addEventListener('click', addExpenseHandler);
+clearHistoryBtnNode.addEventListener('click', clearHistoryHandler);
+setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
