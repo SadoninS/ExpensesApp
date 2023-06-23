@@ -1,36 +1,39 @@
-const EXPENSES_LS_KEY = 'expenses';
 const CURRENCY = 'руб.';
+const LIMIT_LS_KEY = 'limit';
+const LIMIT_INIT_VALUE = 10000;
+const SUM_INIT_VALUE = 0;
+const SUM_LS_KEY = 'sum';
+const STATUS_INIT_VALUE = 'OK';
+const STATUS_LS_KEY = 'status';
+const EXPENSES_LS_KEY = 'expenses';
 const INPUT_ERROR_MESSAGE =
   'Неверный формат ввода: Сумма расхода не может иметь отрицательное значение или равняться "0"';
 
 const newExpenseInputNode = document.querySelector('[data-new-expense-input]');
 const expenseCategoryNode = document.querySelector('[data-expense-category]');
-const newExpenseBtnNode = document.querySelector('[data-add-expense-btn]');
-const historyNode = document.querySelector('[data-hystory-list]');
-const clearHistoryBtnNode = document.querySelector('[data-clear-expenses]');
-
+const limitNode = document.querySelector('[data-limit]');
 const setNewLimitBtnNode = document.querySelector('[data-set-new-limit-btn]');
+const sumNode = document.querySelector('[data-sum]');
+const statusNode = document.querySelector('[data-status]');
+const newExpenseBtnNode = document.querySelector('[data-add-expense-btn]');
+const clearHistoryBtnNode = document.querySelector('[data-clear-expenses]');
+const historyNode = document.querySelector('[data-hystory-list]');
 
-// let expenses = [];
+let limitStorage = JSON.parse(localStorage.getItem(LIMIT_LS_KEY));
+let limit = limitStorage ? limitStorage : LIMIT_INIT_VALUE;
+limitNode.innerText = limit;
+
+let sumStorage = JSON.parse(localStorage.getItem(SUM_LS_KEY));
+let sum = sumStorage ? sumStorage : SUM_INIT_VALUE;
+renderSum(sum);
+
+let statusStorage = JSON.parse(localStorage.getItem(STATUS_LS_KEY));
+let status = statusStorage ? statusStorage : STATUS_INIT_VALUE;
+renderStatus();
 
 let expensesStorage = JSON.parse(localStorage.getItem(EXPENSES_LS_KEY));
 let expenses = Array.isArray(expensesStorage) ? expensesStorage : [];
 renderHistory(expenses);
-
-const sumNode = document.querySelector('[data-sum]');
-const SUM_INIT_VALUE = 0;
-let sum = SUM_INIT_VALUE;
-sumNode.innerText = sum;
-
-const limitNode = document.querySelector('[data-limit]');
-const LIMIT_INIT_VALUE = 10000;
-let limit = LIMIT_INIT_VALUE;
-limitNode.innerText = limit;
-
-const statusNode = document.querySelector('[data-status]');
-const STATUS_INIT_VALUE = 'OK';
-let status = STATUS_INIT_VALUE;
-statusNode.innerText = status;
 
 newExpenseBtnNode.addEventListener('click', addExpenseHandler);
 newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {

@@ -7,7 +7,7 @@ function addExpenseHandler() {
   getExpense();
   countSum(expenses);
   renderSum(sum);
-  renderStatus(sum);
+  renderStatus();
   renderHistory();
   clearInput();
 }
@@ -27,6 +27,8 @@ function setNewLimitHandler() {
     const newLimitValue = parseInt(newLimit);
     limit = newLimitValue;
     limitNode.innerText = limit;
+    limitStorage = JSON.stringify(limit);
+    localStorage.setItem(LIMIT_LS_KEY, limitStorage);
     renderStatus(sum);
   } else return;
 }
@@ -50,6 +52,8 @@ function countSum(expenses) {
     let expenseItem = parseFloat(element.val);
     sum += expenseItem;
   });
+  sumStorage = JSON.stringify(sum);
+  localStorage.setItem(SUM_LS_KEY, sumStorage);
   return sum;
 }
 
@@ -58,12 +62,12 @@ function renderSum(sum) {
   sumNode.innerText = sum;
 }
 
-function renderStatus(sum) {
+function renderStatus() {
   if (sum <= limit) {
     statusNode.innerText = STATUS_INIT_VALUE;
     statusNode.classList.remove('status_red');
   } else {
-    statusNode.innerText = `LIMIT EXEEDED!(${(limit - sum).toFixed(2)})`;
+    statusNode.innerText = `Shit happens!(${(limit - sum).toFixed(2)} ${CURRENCY})`;
     statusNode.classList.add('status_red');
   }
 }
