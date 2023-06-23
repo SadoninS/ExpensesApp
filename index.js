@@ -4,7 +4,7 @@ const INPUT_ERROR_MESSAGE =
 
 const newExpenseInputNode = document.querySelector('[data-new-expense-input]');
 const expenseCategoryNode = document.querySelector('[data-expense-category]');
-const btnNode = document.querySelector('[data-add-expense-btn]');
+const newExpenseBtnNode = document.querySelector('[data-add-expense-btn]');
 const historyNode = document.querySelector('[data-hystory-list]');
 const clearHistoryBtnNode = document.querySelector('[data-clear-expenses]');
 
@@ -27,7 +27,14 @@ const STATUS_INIT_VALUE = 'OK';
 let status = STATUS_INIT_VALUE;
 statusNode.innerText = status;
 
-// newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {
+newExpenseBtnNode.addEventListener('click', addExpenseHandler);
+newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {
+  if (submitByEnter.keyCode === 13) addExpenseHandler();
+});
+clearHistoryBtnNode.addEventListener('click', clearHistoryHandler);
+setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
+
+// / newExpenseInputNode.addEventListener('keyup', function (submitByEnter) {
 //   if (submitByEnter.keyCode === 13) {
 //     if (!newExpenseInputNode.value || newExpenseInputNode.value <= 0) {
 //       alert(INPUT_ERROR_MESSAGE);
@@ -58,7 +65,7 @@ statusNode.innerText = status;
 //   }
 // });
 
-// btnNode.addEventListener('click', function () {
+// newExpenseBtnNode.addEventListener('click', function () {
 //   if (!newExpenseInputNode.value || newExpenseInputNode.value < 1) {
 //     alert(INPUT_ERROR_MESSAGE);
 //     newExpenseInputNode.value = '';
@@ -95,6 +102,3 @@ statusNode.innerText = status;
 //     statusNode.classList.add('status_red');
 //   }
 // });
-btnNode.addEventListener('click', addExpenseHandler);
-clearHistoryBtnNode.addEventListener('click', clearHistoryHandler);
-setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);

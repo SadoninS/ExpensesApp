@@ -1,4 +1,9 @@
 function addExpenseHandler() {
+  if (!newExpenseInputNode.value || newExpenseInputNode.value <= 0) {
+    alert(INPUT_ERROR_MESSAGE);
+    newExpenseInputNode.value = '';
+    return;
+  }
   getExpense();
   countSum(expenses);
   renderSum(sum);
