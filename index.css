@@ -15,12 +15,16 @@ button {
   border: none;
   font-family: inherit;
 }
+input,
+select {
+  font-family: inherit;
+}
 
 .newExpenseForm {
   margin-bottom: 20px;
   display: flex;
   gap: 30px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
 }
 
@@ -33,10 +37,14 @@ button {
 
 .newExpenseInput,
 .expenseCategory {
+  border: 2px solid black;
   padding: 5px 10px;
   height: 60px;
-  font-family: Inter;
   font-size: 32px;
+}
+option {
+  height: 30px;
+  font-size: 20px;
 }
 
 .formBtns {
@@ -121,13 +129,14 @@ button {
   color: red;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .formInputs,
   .formBtns {
     margin: 0 auto;
   }
   .newExpenseInput,
   .expenseCategory {
+    width: inherit;
     height: 50px;
     font-size: 25px;
   }
