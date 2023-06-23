@@ -1,4 +1,5 @@
-const currency = 'руб.';
+const EXPENSES_LS_KEY = 'expenses';
+const CURRENCY = 'руб.';
 const INPUT_ERROR_MESSAGE =
   'Неверный формат ввода: Сумма расхода не может иметь отрицательное значение или равняться "0"';
 
@@ -10,7 +11,11 @@ const clearHistoryBtnNode = document.querySelector('[data-clear-expenses]');
 
 const setNewLimitBtnNode = document.querySelector('[data-set-new-limit-btn]');
 
-let expenses = [];
+// let expenses = [];
+
+let expensesStorage = JSON.parse(localStorage.getItem(EXPENSES_LS_KEY));
+let expenses = Array.isArray(expensesStorage) ? expensesStorage : [];
+renderHistory(expenses);
 
 const sumNode = document.querySelector('[data-sum]');
 const SUM_INIT_VALUE = 0;
@@ -49,7 +54,7 @@ setNewLimitBtnNode.addEventListener('click', setNewLimitHandler);
 
 //     let expensesListHTML = '';
 //     expenses.forEach((element) => {
-//       expensesListHTML += `<li class="currency">${element}</li>`;
+//       expensesListHTML += `<li class="CURRENCY">${element}</li>`;
 //     });
 //     historyNode.innerHTML = `<ol>${expensesListHTML}</ol>`;
 

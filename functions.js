@@ -13,6 +13,8 @@ function addExpenseHandler() {
 }
 
 function clearHistoryHandler() {
+  localStorage.clear();
+  expenses = [];
   historyNode.innerHTML = '';
   sumNode.innerHTML = SUM_INIT_VALUE;
   statusNode.innerHTML = STATUS_INIT_VALUE;
@@ -37,6 +39,8 @@ function getExpense() {
   expense.val = parseFloat(newExpenseInputNode.value);
   expense.category = expenseCategoryNode.value;
   expenses.push(expense);
+  expensesStorage = JSON.stringify(expenses);
+  localStorage.setItem(EXPENSES_LS_KEY, expensesStorage);
   return expense;
 }
 
@@ -68,7 +72,7 @@ function renderHistory() {
   let expensesListHTML = '';
   expenses.forEach((expense) => {
     expenseValueHTML = expense.val.toFixed(2);
-    expensesListHTML += `<li class="expensesItem"> ${expenseValueHTML} ${currency} ${expense.category}</li>`;
+    expensesListHTML += `<li class="expensesItem"> ${expenseValueHTML} ${CURRENCY} ${expense.category}</li>`;
     historyNode.innerHTML = expensesListHTML;
   });
 }
