@@ -21,10 +21,12 @@ function clearHistory() {
 
 function setNewLimitHandler() {
   const newLimit = prompt('Введите новый лимит');
-  const newLimitValue = parseInt(newLimit);
-  limit = newLimitValue;
-  limitNode.innerText = limit;
-  renderStatus(sum);
+  if (newLimit) {
+    const newLimitValue = parseInt(newLimit);
+    limit = newLimitValue;
+    limitNode.innerText = limit;
+    renderStatus(sum);
+  } else return;
 }
 
 function renderSum(sum) {
